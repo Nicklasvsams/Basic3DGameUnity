@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Collectible
   - Enemy
+  - Collectable
+  - CoinPoint
+  - CameraTarget
   layers:
   - Default
   - TransparentFX

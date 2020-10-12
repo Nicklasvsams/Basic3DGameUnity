@@ -4,7 +4,6 @@
 public class Enemy : MonoBehaviour
 {
     public Rigidbody enemyBody;
-    private Vector3 movementVector;
 
     [SerializeField]
     private Transform[] waypoints;
@@ -22,7 +21,6 @@ public class Enemy : MonoBehaviour
     {
         targetPosition = waypoints[0].position;
         enemyBody = GetComponent<Rigidbody>();
-        movementVector = new Vector3(350 * Time.deltaTime, 0, 0);
     }
 
     // Update is called once per frame
@@ -40,11 +38,14 @@ public class Enemy : MonoBehaviour
 
         if (Vector3.Distance(transform.position, targetPosition) < .25f)
         {
-            if (waypointIndex == waypoints.Length)
+            if (waypointIndex >= waypoints.Length - 1)
             {
-                waypointIndex 
+                waypointIndex = 0;
             }
-            waypointIndex++;
+            else
+            {
+                waypointIndex++;
+            }
             targetPosition = waypoints[waypointIndex].position;
         }
     }
